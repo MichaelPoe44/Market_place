@@ -1,6 +1,5 @@
 import { StateProvider } from "./StateProvider.js"
-import reducer, { getInitialState } from "./reducer.js"
-
+import reducer, {initialState} from "./reducer.js"
 
 
 export const metadata = {
@@ -11,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <StateProvider initialState={getInitialState} reducer={reducer}>
+      <StateProvider initialState={initialState} reducer={reducer}>
         <body>{children}</body>
       </StateProvider>
     </html>
