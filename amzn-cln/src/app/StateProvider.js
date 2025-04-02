@@ -1,5 +1,5 @@
 "use client";
-import React, {createContext, useContext, useReducer, useEffect} from "react";
+import React, {createContext, useContext, useReducer} from "react";
 
 
 
@@ -9,9 +9,11 @@ const StateContext = createContext();
 
 // wrap app and provide data layer to all
 export const StateProvider = ({ reducer, initialState, children }) => {
+    //console.log("init state: ",initialState);
+    const [state, dispatch] = useReducer(reducer, initialState);
     return( 
-
-        <StateContext.Provider value={useReducer(reducer,initialState)}>
+        
+        <StateContext.Provider value={{ state, dispatch }}>
             {children}
         </StateContext.Provider>
     );

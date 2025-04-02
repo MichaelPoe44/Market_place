@@ -8,8 +8,8 @@ export const initialState = {
 };
 
 
-export default async function reducer(state, action){
-    console.log(action);
+export default function reducer(state, action){
+    //console.log(action);
     
     switch(action.type){
 
@@ -19,7 +19,7 @@ export default async function reducer(state, action){
             return {
                 ...state,
                 basket: [...state.basket, action.item],
-            }
+            };
             
         default:
             return state;

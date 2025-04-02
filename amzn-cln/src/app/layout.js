@@ -10,9 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <StateProvider initialState={initialState} reducer={reducer}>
-        <body>{children}</body>
-      </StateProvider>
+      <body>
+        <StateProvider initialState={initialState} reducer={reducer}>
+          {children}
+        </StateProvider>
+      </body>
     </html>
   )
 }

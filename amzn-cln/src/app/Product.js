@@ -1,18 +1,15 @@
 "use client";
 import "./Product.css";
 import { useStateValue } from "./StateProvider";
-import { useEffect } from "react";
+import { useEffect, useReducer } from "react";
+import reducer, { initialState } from "./reducer.js";
 
 
 
-
-//{Array(rating).fill().map((_, i) => (
- //   <p>⭐️</p>
-//))}
 export default function Product({ id, title, image, price, rating}){
-    const [ { basket } , dispatch] = useStateValue();
-
-    console.log(`this is the basket >>>>> ${basket}`);
+    const  {state , dispatch} = useStateValue();
+    
+    //console.log("this is the state >>>>>", state);
     const addToBasket = () => {
         
         //dispatch item into data layer
@@ -26,7 +23,7 @@ export default function Product({ id, title, image, price, rating}){
                 rating: rating,
             },
         });
-            
+        
     };
     
     
@@ -40,7 +37,11 @@ export default function Product({ id, title, image, price, rating}){
                     <strong>{price}</strong>
                 </p>
                 <div className="product_rating">
-                    <p>⭐️⭐️</p>
+            
+                    {Array(rating).fill().map((_, i) => (
+                        <p key={i}>⭐️</p>
+                    ))}
+                
                     
                     
                 </div>
