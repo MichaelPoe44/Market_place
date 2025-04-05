@@ -1,6 +1,5 @@
-"use client";
 import "./Subtotal.css";
-
+import { useStateValue } from "../StateProvider";
 import { NumericFormat } from "react-number-format";
 
 
@@ -8,8 +7,13 @@ import { NumericFormat } from "react-number-format";
 
 
 export default function Subtotal(){
-    let itemCount = 0;
-    let amount = 10000;
+    const {state, dispatch} = useStateValue();
+    let itemCount = state.basket?.length;
+    let amount = 0;
+    
+    for (let i=0; i<itemCount; i++){
+        amount += state.basket[i]?.price;
+    }
     return(
 
         <div className="subtotal">

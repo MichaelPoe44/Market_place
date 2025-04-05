@@ -1,8 +1,14 @@
+"use client";
+import { useStateValue } from "../StateProvider";
 import "./Checkout.css";
+import CheckoutProduct from "./CheckoutProduct";
 import Subtotal from "./Subtotal.js";
 
 
 export default function Checkout(){
+    const {state, dispatch} = useStateValue();
+    
+
     return(
         <div className="checkout">
             <div className="checkout_left">
@@ -12,7 +18,21 @@ export default function Checkout(){
                 <div>
                     <h2 className="checkout_title">
                         Your Shopping Basket</h2>
-                        
+                    
+
+                    {state.basket.map((item,i) => (
+                        <CheckoutProduct
+                            key={i}
+                            id={item.id}
+                            title={item.title}
+                            image={item.image}
+                            price={item.price}
+                            rating={item.rating}
+                         />
+                    ))}
+
+    
+                    
                 </div>
 
 

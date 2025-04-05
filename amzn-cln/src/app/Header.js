@@ -1,11 +1,19 @@
+"use client";
 import "./Header.css";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Link from "next/link";
+import { useStateValue } from "./StateProvider.js";
 
 
 
 export default function Header() {
+    const {state, dispatch} = useStateValue();
+
+
+
+
+
     return(
         <div className="header">
             <Link href="/">
@@ -58,7 +66,7 @@ export default function Header() {
                     <div className="header_optionBasket">
                             <ShoppingCartIcon />
                         <span className="header_optionLineTwo
-                        header_basketCount">0</span>
+                        header_basketCount">{state.basket?.length}</span>
                         
                     </div>
                 </Link>
