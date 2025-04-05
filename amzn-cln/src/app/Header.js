@@ -1,13 +1,27 @@
+"use client";
 import "./Header.css";
 import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Link from "next/link";
+import { useStateValue } from "./StateProvider.js";
+
+
 
 export default function Header() {
+    const {state, dispatch} = useStateValue();
+
+
+
+
+
     return(
         <div className="header">
-            <img
+            <Link href="/">
+                <img
                 className="header_logo"
                 src="white_amazon.png"
-            />                
+                />                
+            </Link>
 
 
             <div className="header_search">
@@ -46,6 +60,17 @@ export default function Header() {
 
                 </div>
 
+                
+
+                <Link href="/checkout">
+                    <div className="header_optionBasket">
+                            <ShoppingCartIcon />
+                        <span className="header_optionLineTwo
+                        header_basketCount">{state.basket?.length}</span>
+                        
+                    </div>
+                </Link>
+                
             </div>
 
 
