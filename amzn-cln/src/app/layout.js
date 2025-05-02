@@ -1,5 +1,6 @@
 import { StateProvider } from "./StateProvider.js"
 import reducer, {initialState} from "./reducer.js"
+import CheckUser from "./CheckUser.js";
 
 
 export const metadata = {
@@ -12,6 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <StateProvider initialState={initialState} reducer={reducer}>
+          <CheckUser />
           {children}
         </StateProvider>
       </body>

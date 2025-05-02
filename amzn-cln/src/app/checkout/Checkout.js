@@ -16,6 +16,7 @@ export default function Checkout(){
                 <img className="checkout_ad" src="amazon_ad.jpg" />
 
                 <div>
+                    <h3>{state.user?.email}</h3>
                     <h2 className="checkout_title">
                         Your Shopping Basket</h2>
                     

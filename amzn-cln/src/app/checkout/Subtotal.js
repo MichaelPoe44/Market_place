@@ -1,12 +1,13 @@
 import "./Subtotal.css";
 import { useStateValue } from "../StateProvider";
 import { NumericFormat } from "react-number-format";
-
+import { useRouter } from "next/navigation";
 
 
 
 
 export default function Subtotal(){
+    const router = useRouter();
     const {state, dispatch} = useStateValue();
     let itemCount = state.basket?.length;
     let amount = 0;
@@ -39,7 +40,7 @@ export default function Subtotal(){
                 
             />
             
-            <button>Proceed to Checkout</button>
+            <button onClick={e => router.push("/payment")}>Proceed to Checkout</button>
         </div>
 
     );

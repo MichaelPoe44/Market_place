@@ -9,7 +9,6 @@ const StateContext = createContext();
 
 // wrap app and provide data layer to all
 export const StateProvider = ({ reducer, initialState, children }) => {
-    //console.log("init state: ",initialState);
     const [state, dispatch] = useReducer(reducer, initialState);
     return( 
         

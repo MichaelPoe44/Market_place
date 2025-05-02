@@ -4,13 +4,20 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Link from "next/link";
 import { useStateValue } from "./StateProvider.js";
+import {auth} from "./firebase.js"
+
+
 
 
 
 export default function Header() {
     const {state, dispatch} = useStateValue();
 
-
+    const handleAuthentication = () => {
+        if (state.user){
+            auth.signOut();
+        }
+    }
 
 
 
@@ -32,14 +39,18 @@ export default function Header() {
 
 
             <div className="header_nav">
-                <div className="header_option">
-                    <span className="header_optionLineOne">
-                        Hello Guest </span>
+                <Link  href={state.user ? "/" : "/login"}>
+                    <div onClick={handleAuthentication} className="header_option">
+                        <span className="header_optionLineOne">
+                            Hello {state.user ? state.user.email : "Guest"}
+                        </span>
                     
-                    <span className="header_optionLineTwo">
-                        Sign In</span>
+                        <span className="header_optionLineTwo">{state.user ?
+                         "Sign Out" : "Sign In"}
+                        </span>
                         
-                </div>
+                    </div>
+                </Link>
 
 
                 <div className="header_option">
