@@ -3,25 +3,31 @@ import { useStateValue } from "../StateProvider";
 import { NumericFormat } from "react-number-format";
 import { useRouter } from "next/navigation";
 
-
+//6 05 38
+export function getBasketTotal(basket){
+    let itemCount = basket.length;
+    let amount = 0;
+    for (let i=0; i<itemCount; i++){
+        amount += basket[i]?.price;
+    }
+    return amount;
+}
 
 
 export default function Subtotal(){
     const router = useRouter();
     const {state, dispatch} = useStateValue();
     let itemCount = state.basket?.length;
-    let amount = 0;
     
-    for (let i=0; i<itemCount; i++){
-        amount += state.basket[i]?.price;
-    }
+    
+    
     return(
 
         <div className="subtotal">
             <NumericFormat
                 decimalScale={2}
                 fixedDecimalScale={true}
-                value={amount}
+                value={getBasketTotal(state.basket)}
                 displayType={"text"}
                 thousandSeparator={true}
                 prefix="$"
@@ -29,7 +35,7 @@ export default function Subtotal(){
                 renderText={(value) => (
                     <div>
                         <p>
-                            Subtotal ({itemCount} items): <strong>{value}</strong>
+                            Subtotal ({state.basket.length} items): <strong>{value}</strong>
                         </p>
                         <small className="subtotal_gift">
                             <input type="checkbox" />

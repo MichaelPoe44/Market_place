@@ -68,7 +68,7 @@ export default function Login(){
 
                 </form>
                 
-                <p>By signing in you agree to My Amazon's Conditions and Use.</p>
+                <p>This is not a real market place, just a replica. By signing in you agree to My Amazon's Conditions and Use.</p>
 
                 <button onClick={register} className="login_createButton">
                     Create Account

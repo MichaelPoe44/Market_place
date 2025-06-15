@@ -7,7 +7,6 @@ import { useEffect } from "react";
 
 export default function CheckUser(){
     const {state, dispatch} = useStateValue();
-    console.log("here");
     useEffect(() => {
         auth.onAuthStateChanged(authUser => {
             console.log("USER IS >>>>> ", authUser);
