@@ -3,7 +3,7 @@ const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_51RKiecPLQSvcEPtGravfbs3wRKgIYlboRgEhx9prMUwChj6K5y46SrYDL3Wf2BCEqNHerOgu4XoQjoXu9921DcGW00j8JsX4oT")
+const stripe = require("stripe")("")//key here
 
 
 //API
